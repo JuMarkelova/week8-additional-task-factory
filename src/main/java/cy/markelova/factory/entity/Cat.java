@@ -49,6 +49,6 @@ public class Cat {
     }
 
     public String toString() {
-        return String.format("Cat %d. color: %s, weight: %.2f kg, age: %d full year(s)", ID, color, weight, age);
+        return String.format("Cat id %-3d color: %-7s weight: %5.2f kg age: %2d full year(s)", ID, color, weight, age);
     }
 }
