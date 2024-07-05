@@ -39,9 +39,16 @@ public class FactoryTests {
         Cat cat = new Cat(generator.weightGenerator(),
                 generator.ageGenerator(),
                 Color.getRandomColor(generator.colorNumberGenerator()));
-        System.out.println(cat);
         Assert.assertTrue(0.5 <= cat.getWeight() && cat.getWeight() < 20.5, "Wrong generated weight");
         Assert.assertTrue(0 <= cat.getAge() && cat.getAge() < 18, "Wrong generated age");
         Assert.assertNotNull(cat.getColor(), "Wrong generated color");
+    }
+
+    @Test
+    public void generateCatThroughFactory() {
+        Factory factory = Factory.getInstance();
+        Cat cat = null;
+        cat = factory.createCat();
+        Assert.assertNotNull(cat, "Error cat generation through factory");
     }
 }
