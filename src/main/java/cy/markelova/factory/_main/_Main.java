@@ -2,6 +2,7 @@ package cy.markelova.factory._main;
 
 import cy.markelova.factory.entity.Cat;
 import cy.markelova.factory.entity.Factory;
+import cy.markelova.factory.service.CatSorter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +15,11 @@ public class _Main {
             cats.add(Factory.getInstance().createCat());
         }
 
-        cats.stream().forEach(cat -> System.out.println(cat));
+        System.out.println("Unsorted:");
+        cats.forEach(System.out::println);
+
+        System.out.println("\nSorted by color, age, weight:");
+        CatSorter.sortCatsColorAgeWeight(cats);
+        cats.forEach(System.out::println);
     }
 }

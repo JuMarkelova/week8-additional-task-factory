@@ -3,9 +3,13 @@ package factory;
 import cy.markelova.factory.entity.Cat;
 import cy.markelova.factory.entity.Color;
 import cy.markelova.factory.entity.Factory;
+import cy.markelova.factory.service.CatSorter;
 import cy.markelova.factory.util.DataGenerator;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FactoryTests {
 
@@ -50,5 +54,58 @@ public class FactoryTests {
         Cat cat = null;
         cat = factory.createCat();
         Assert.assertNotNull(cat, "Error cat generation through factory");
+    }
+
+    @Test
+    public void testSortingColor() {
+        List<Cat> cats = new ArrayList<>();
+        cats.add(new Cat(10, 5, Color.WHITE));
+        cats.add(new Cat(10, 5, Color.BROWN));
+        cats.add(new Cat(10, 5, Color.BLACK));
+
+        CatSorter.sortCatsColorAgeWeight(cats);
+        Assert.assertEquals(cats.get(0).getID(), 3, "wrong sorting by color 1");
+        Assert.assertEquals(cats.get(1).getID(), 2, "wrong sorting by color 2");
+        Assert.assertEquals(cats.get(2).getID(), 1, "wrong sorting by color 3");
+    }
+
+    @Test
+    public void testSortingAge() {
+        List<Cat> cats = new ArrayList<>();
+        cats.add(new Cat(10, 5, Color.WHITE));
+        cats.add(new Cat(10, 6, Color.BROWN));
+        cats.add(new Cat(1, 8, Color.BROWN));
+
+        CatSorter.sortCatsColorAgeWeight(cats);
+        Assert.assertEquals(cats.get(0).getID(), 2, "wrong sorting by age 1");
+        Assert.assertEquals(cats.get(1).getID(), 3, "wrong sorting by age 2");
+        Assert.assertEquals(cats.get(2).getID(), 1, "wrong sorting by age 3");
+    }
+
+    @Test
+    public void testSortingWeight() {
+        List<Cat> cats = new ArrayList<>();
+        cats.add(new Cat(10, 5, Color.GREY));
+        cats.add(new Cat(10, 6, Color.BROWN));
+        cats.add(new Cat(1, 6, Color.BROWN));
+
+        CatSorter.sortCatsColorAgeWeight(cats);
+        Assert.assertEquals(cats.get(0).getID(), 3, "wrong sorting by weight 1");
+        Assert.assertEquals(cats.get(1).getID(), 2, "wrong sorting by weight 2");
+        Assert.assertEquals(cats.get(2).getID(), 1, "wrong sorting by weight 3");
+    }
+
+
+    @Test
+    public void testSortingSameOrder() {
+        List<Cat> cats = new ArrayList<>();
+        cats.add(new Cat(10, 6, Color.BROWN));
+        cats.add(new Cat(10, 6, Color.BROWN));
+        cats.add(new Cat(10, 6, Color.BROWN));
+
+        CatSorter.sortCatsColorAgeWeight(cats);
+        Assert.assertEquals(cats.get(0).getID(), 1, "wrong sorting 1");
+        Assert.assertEquals(cats.get(1).getID(), 2, "wrong sorting 2");
+        Assert.assertEquals(cats.get(2).getID(), 3, "wrong sorting 3");
     }
 }
