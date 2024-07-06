@@ -40,9 +40,9 @@ public class FactoryTests {
     @Test
     public void testRandomCatParameters() {
         DataGenerator generator = new DataGenerator();
-        Cat cat = new Cat(generator.weightGenerator(),
-                generator.ageGenerator(),
-                Color.getRandomColor(generator.colorNumberGenerator()));
+        Cat cat = new Cat(generator.generateWeight(),
+                generator.generateAge(),
+                Color.getRandomColor());
         Assert.assertTrue(0.5 <= cat.getWeight() && cat.getWeight() < 20.5, "Wrong generated weight");
         Assert.assertTrue(0 <= cat.getAge() && cat.getAge() < 18, "Wrong generated age");
         Assert.assertNotNull(cat.getColor(), "Wrong generated color");
@@ -94,7 +94,6 @@ public class FactoryTests {
         Assert.assertEquals(cats.get(1).getID(), 2, "wrong sorting by weight 2");
         Assert.assertEquals(cats.get(2).getID(), 1, "wrong sorting by weight 3");
     }
-
 
     @Test
     public void testSortingSameOrder() {

@@ -1,19 +1,23 @@
 package cy.markelova.factory.entity;
 
 public enum Color {
-    WHITE, BLACK, GREY, BROWN;
+    WHITE(1), BLACK(2), GREY(3), BROWN(4);
 
-    public static Color getRandomColor(int number) {
-        Color color = null;
-        if (number >= 0 && number < 31) {
-            color = WHITE;
-        } else if (number >= 31 && number < 61) {
-            color = BLACK;
-        } else if (number >= 61 && number < 81) {
-            color = GREY;
-        } else if (number >= 81 && number < 100) {
-            color = BROWN;
-        }
-        return color;
+    int colorIndex = 0;
+
+    Color(int index) {
+        this.colorIndex = index;
+    }
+
+    public int getColorIndex() {
+        return colorIndex;
+    }
+
+    public static Color getColorByIndex(int index) {
+        return Color.values()[index - 1];
+    }
+
+    public static Color getRandomColor() {
+        return Color.getColorByIndex((int) (Math.random() * 4) + 1);
     }
 }

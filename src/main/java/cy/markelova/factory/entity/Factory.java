@@ -17,8 +17,8 @@ public class Factory {
     }
 
     public Cat createCat() {
-        return new Cat(generator.weightGenerator(),
-                generator.ageGenerator(),
-                Color.getRandomColor(generator.colorNumberGenerator()));
+        return new Cat(generator.generateWeight(),
+                generator.generateAge(),
+                Color.getRandomColor());
     }
 }
