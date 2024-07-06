@@ -18,8 +18,8 @@ public class _Main {
         System.out.println("Unsorted:");
         cats.forEach(System.out::println);
 
-        System.out.println("\nSorted by color, age, weight:");
         CatSorter.sortCatsColorAgeWeight(cats);
+        System.out.println("\nSorted by color, age, weight:");
         cats.forEach(System.out::println);
     }
 }

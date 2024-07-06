@@ -17,7 +17,6 @@ public class Cat {
 
     private long generateId() {
         return idCounter++;
-
     }
 
     public long getID() {
@@ -49,6 +48,7 @@ public class Cat {
     }
 
     public String toString() {
-        return String.format("Cat id %-3d | color: %-7s | age: %2d full year(s) | weight: %5.2f kg ", ID, color, age, weight);
+        return String.format("Cat id %-3d | color: %-7s | age: %2d full year(s) | weight: %5.2f kg ",
+                ID, color, age, weight);
     }
 }

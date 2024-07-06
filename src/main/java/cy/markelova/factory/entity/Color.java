@@ -1,6 +1,7 @@
 package cy.markelova.factory.entity;
 
 public enum Color {
+
     WHITE(1), BLACK(2), GREY(3), BROWN(4);
 
     int colorIndex = 0;
